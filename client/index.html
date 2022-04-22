@@ -9,13 +9,28 @@
 
     <br>
     <br>
-    <form>
-      <input id="fortuneText" type="text" placeholder="Add new fortune"> <input id="fortuneAddBtn" type="submit" value="Add">
-    </form>
+    <div>
+      Add your own fortune below!
+      <form>
+        <input id="fortuneText" type="text" placeholder="Add new fortune"> <button id="fortuneAddBtn">Add</button>
+      </form>
+    </div>
 
     <br>
     <br>
-   
+
+    <div>
+      Did you just really hate that fortune? Remove it from the list here <button id="deleteRecent">Delete</button>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+      Found a fortune you really like? Click save to add your most recent fortune <button id="saveBtn">Save</button>
+      <hr>
+      <ul id="fortuneLi"></ul>
+    </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>

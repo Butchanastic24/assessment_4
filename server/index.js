@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { application } = require("express");
 
 const app = express();
 
@@ -26,10 +27,10 @@ app.get("/api/compliment", (req, res) => {
 
 //Fortunes
 const fortunes = [
-  "A friend is a present you give yourself.",
-  "A hunch is creativity trying to tell you something.",
-  "A person of words and not deeds is like a garden full of weeds.",
-  "Advice, when most needed, is least heeded."
+  // "A friend is a present you give yourself.",
+  // "A hunch is creativity trying to tell you something.",
+  // "A person of words and not deeds is like a garden full of weeds.",
+  // "Advice, when most needed, is least heeded."
 ];
 
 app.get("/api/fortune", (req, res) => {
@@ -40,10 +41,26 @@ app.get("/api/fortune", (req, res) => {
 });
 
 app.post("/api/fortune", (req, res) => {
-  const newFortune = res.json({requestBody: })
-  fortunes.push(newFortune);
+  const {newFortune} = req.body;
   
-  res.status(200).send(newFortune);
+  fortunes.push(newFortune);
+
+  res.sendStatus(200).send("Fortune Added!");
+});
+
+app.delete("/api/fortune", (req, res) => {
+  const {delFortune} = req.body;
+  console.log(delFortune);
+
+  for(let i = 0; i < fortunes.length; i++){
+    if(fortunes[i] === delFortune){
+      fortunes.pop(fortunes[i]);
+    }
+  }
+
+  console.log(fortunes);
+
+  res.status(200).send("Fortune deleted");
 });
 
 //Run the server
